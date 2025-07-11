@@ -1,6 +1,6 @@
 # Kafka CDC: PostgreSQL → Kafka → Snowflake
 
-This project demonstrates a **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. Changes in a PostgreSQL database are streamed through Kafka and delivered into Snowflake for analysis.
+This project demonstrates a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. Changes in PostgreSQL are streamed to Kafka topics and then delivered into Snowflake for analytics.
 
 ---
 
@@ -16,21 +16,24 @@ This project demonstrates a **Change Data Capture (CDC)** pipeline using **Debez
 
 ## 🚀 Quick Start
 
-1. **Start services**  
+1. **Start all services**
+
    ```bash
    docker compose -f dc.yaml up -d
 ````
 
 2. **Access PostgreSQL**
-   Connect using:
+
+   Connect using any SQL client or VS Code extension:
 
    * Host: `localhost`
    * Port: `5432`
    * User: `admin`
    * Password: `password`
 
-3. **Create schema & tables**
-   Run SQL in [`init/ed-pg.sql`](./init/ed-pg.sql) or manually:
+3. **Create schema and tables**
+
+   Run the script in [`init/ed-pg.sql`](./init/ed-pg.sql), or manually execute:
 
    ```sql
    CREATE SCHEMA IF NOT EXISTS test_db;
@@ -50,7 +53,7 @@ This project demonstrates a **Change Data Capture (CDC)** pipeline using **Debez
 
 4. **Register connectors**
 
-   * Postgres Source:
+   * **PostgreSQL Source Connector**
 
      ```bash
      curl -X POST http://localhost:8083/connectors \
@@ -58,7 +61,7 @@ This project demonstrates a **Change Data Capture (CDC)** pipeline using **Debez
        -d @connectors/pg/debezium-postgres-source.json
      ```
 
-   * Snowflake Sink:
+   * **Snowflake Sink Connector**
 
      ```bash
      curl -X POST http://localhost:8083/connectors \
@@ -68,15 +71,15 @@ This project demonstrates a **Change Data Capture (CDC)** pipeline using **Debez
 
 ---
 
-## 🔗 Key Files
+## 📁 Key Files
 
-* [`docker-compose.yaml`](./docker-compose.yaml) – Kafka, Connect, PostgreSQL
-* [`debezium-postgres-source.json`](./connectors/pg/debezium-postgres-source.json) – Debezium config
-* [`snowflake-sink-connector.json`](./connectors/snowflake/snowflake-sink-connector.json) – Snowflake sink config
+* [`dc.yaml`](./dc.yaml) – Docker Compose file
+* [`connectors/pg/debezium-postgres-source.json`](./connectors/pg/debezium-postgres-source.json) – Debezium source config
+* [`connectors/snowflake/snowflake-sink-connector.json`](./connectors/snowflake/snowflake-sink-connector.json) – Snowflake sink config (with redacted credentials)
 
 ---
 
-## 📌 Example Data Insert
+## 🧪 Sample Insert
 
 ```sql
 INSERT INTO test_db.users (_id, data)
@@ -87,7 +90,7 @@ VALUES ('u1', '{"name": "Haneen", "email": "haneen@example.com"}');
 
 ## 🔐 Security Notice
 
-Snowflake credentials and private keys are **redacted** in configuration files for safety.
+All secrets (e.g., Snowflake private key, database password) are **redacted**. Do not expose sensitive credentials in public repositories.
 
 ---
 
@@ -95,11 +98,6 @@ Snowflake credentials and private keys are **redacted** in configuration files f
 
 **Haneen**
 Kafka CDC Project — ITI Big Data Lab
+July 2025
 
-```
-
----
-
-This version keeps it simple and clean while covering all the core parts.  
-Let me know if you want a **PDF version** or want this in **Arabic** too!
 ```
