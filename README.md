@@ -71,7 +71,7 @@ This project demonstrates a real-time **Change Data Capture (CDC)** pipeline usi
 
 ---
 
-📁 Key Files
+## 📁 Key Files
 dc.yaml – Docker Compose file
 
 connectors/pg/debezium-postgres-source.json – Debezium source config
