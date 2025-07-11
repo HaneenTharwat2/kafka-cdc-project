@@ -97,7 +97,7 @@ All secrets such as private keys and passwords are **redacted**.
 ## 👩‍💻 Author
 
 **Haneen**
-Kafka CDC Project — ITI Big Data Lab
+Kafka CDC Project — ITI Kafka Lab
 July 2025
 
 ```
