@@ -1,10 +1,3 @@
-Absolutely — here is a **professional, polished `README.md`** that you can confidently include in your GitHub project. It’s clean, clear, and suitable for submission, portfolios, or resumes.
-
----
-
-## ✅ Professional `README.md` (Final Version)
-
-```markdown
 # Kafka CDC Pipeline: PostgreSQL → Kafka → Snowflake
 
 This project implements a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. Changes in a PostgreSQL database are captured and published to Kafka topics, then delivered to Snowflake for analytics and warehousing.
