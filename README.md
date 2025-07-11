@@ -90,7 +90,7 @@ VALUES ('u1', '{"name": "Haneen", "email": "haneen@example.com"}');
 
 ## 🔐 Security Notice
 
-All secrets such as private keys and passwords are **redacted**. Do not expose sensitive information in public repositories.
+All secrets such as private keys and passwords are **redacted**.
 
 ---
 
