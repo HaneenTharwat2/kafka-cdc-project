@@ -100,4 +100,3 @@ All secrets such as private keys and passwords are **redacted**.
 Kafka CDC Project — ITI Kafka Lab
 July 2025
 
-```
