@@ -18,7 +18,7 @@ This project demonstrates a **Change Data Capture (CDC)** pipeline using **Debez
 
 1. **Start services**  
    ```bash
-   docker-compose up -d
+   docker compose -f dc.yaml up -d
 ````
 
 2. **Access PostgreSQL**
