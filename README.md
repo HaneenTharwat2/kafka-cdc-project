@@ -71,11 +71,14 @@ This project demonstrates a real-time **Change Data Capture (CDC)** pipeline usi
 
 ---
 
-## 📁 Key Files
+📁 Key Files
+dc.yaml – Docker Compose file
 
-* [`dc.yaml`](./dc.yaml) – Docker Compose file
-* [`connectors/pg/debezium-postgres-source.json`](./connectors/pg/debezium-postgres-source.json) – Debezium source config
-* [`connectors/snowflake/snowflake-sink-connector.json`](./connectors/snowflake/snowflake-sink-connector.json) – Snowflake sink config (with redacted credentials)
+connectors/pg/debezium-postgres-source.json – Debezium source config
+
+connectors/snowflake/snowflake-sink-connector.json – Snowflake sink config (with redacted credentials)
+
+
 
 ---
 
