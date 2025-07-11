@@ -1,1 +1,27 @@
+{
+  "name": "pg-snowflake-sink",
+  "config": {
+    "connector.class": "com.snowflake.kafka.connector.SnowflakeSinkConnector",
+    "tasks.max": "1",
+    "topics": "postgres_cdc.test_db.users,postgres_cdc.test_db.orders",
+
+    "snowflake.url.name": "qs33908.me-central2.gcp.snowflakecomputing.com",
+    "snowflake.user.name": "HANEEN",
+
+    "snowflake.private.key": "<REDACTED_PRIVATE_KEY>",
+    "snowflake.private.key.passphrase": "<REDACTED_OR_EMPTY>",
+
+    "snowflake.database.name": "test_db",
+    "snowflake.schema.name": "test_db",
+    "snowflake.role.name": "SYSADMIN",
+
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false",
+
+    "buffer.count.records": "10000",
+    "buffer.size.bytes": "5000000",
+    "buffer.flush.timeSec": "60"
+  }
+}
 
