@@ -1,10 +1,14 @@
-#  Kafka CDC: PostgreSQL → Kafka → Snowflake
+Certainly! Here's the **full professional `README.md`** including your project summary, technologies, setup, connector registration, result screenshots, and key files — all tailored to your structure:
+
+---
+
+# 📡 Kafka CDC: PostgreSQL → Kafka → Snowflake
 
 This project demonstrates a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. It captures changes from PostgreSQL tables, streams them into Kafka topics, and sinks them into Snowflake for analytics and reporting.
 
 ---
 
-##  Technologies Used
+## 🚀 Technologies Used
 
 * **Apache Kafka** (event streaming platform)
 * **Kafka Connect** (connector framework)
@@ -15,7 +19,7 @@ This project demonstrates a real-time **Change Data Capture (CDC)** pipeline usi
 
 ---
 
-##  Quick Start
+## ⚙️ Quick Start
 
 ### 1. Start All Services
 
@@ -60,7 +64,7 @@ CREATE TABLE test_db.orders (
 
 ### 4. Register Kafka Connectors
 
-####  PostgreSQL Source Connector
+#### 🔗 PostgreSQL Source Connector
 
 ```bash
 curl -X POST http://localhost:8083/connectors \
@@ -68,7 +72,7 @@ curl -X POST http://localhost:8083/connectors \
   -d @connectors/pg/debezium-postgres-source.json
 ```
 
-####  Snowflake Sink Connector
+#### ❄️ Snowflake Sink Connector
 
 ```bash
 curl -X POST http://localhost:8083/connectors \
@@ -78,23 +82,48 @@ curl -X POST http://localhost:8083/connectors \
 
 ---
 
-##  Result Snapshots
+## 🗂️ Project Structure
 
-###  Kafka Topic: Users
+```
+📁 connectors/
+  ├── 📁 pg/
+  │   └── debezium-postgres-source.json
+  └── 📁 snowflake/
+      └── snowflake-sink-connector.json
 
-![Users Topic](./Result-Snapshots/users-topic.png)
+📁 init/
+  └── ed-pg.sql
 
-###  Kafka Topic: Orders
+📁 Result-Snapshots/
+  ├── users-topic.png
+  ├── orders-topic.png
+  ├── snowflake-users.png
+  └── snowflake-orders.png
 
-![Orders Topic](./Result-Snapshots/orders-topic.png)
+📄 dc.yaml
+📄 README.md
+📄 diagram.png (optional architecture diagram)
+```
 
-###  Snowflake Table: Users
+---
 
-![Snowflake Users](./Result-Snapshots/snowflake-users.png)
+## 🖼️ Result Snapshots
 
-###  Snowflake Table: Orders
+### 🟢 Kafka Topic: Users
 
-![Snowflake Orders](./Result-Snapshots/snowflake-orders.png)
+![Users Topic](./Result-Snapshots/users-topic-messages.png)
+
+### 🟢 Kafka Topic: Orders
+
+![Orders Topic](./Result-Snapshots/orders-topic-messages.png)
+
+### 🟦 Snowflake Table: Users
+
+![Snowflake Users](./Result-Snapshots/snowflake-users-table.png)
+
+### 🟦 Snowflake Table: Orders
+
+![Snowflake Orders](./Result-Snapshots/snowflake-orders-table.png)
 
 ---
 
@@ -104,4 +133,9 @@ All credentials (e.g. passwords, private keys) have been redacted from this repo
 
 ---
 
+Let me know if you'd also like to include:
 
+* A brief **Architecture Explanation**
+* A **sample record flow**
+* A link to your **diagram.png**
+  I can append that too.
