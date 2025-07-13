@@ -4,7 +4,7 @@ This project demonstrates a real-time **Change Data Capture (CDC)** pipeline usi
 
 ---
 
-## 🛠 Technologies
+##  Technologies
 
 - Apache Kafka + Kafka Connect
 - Debezium PostgreSQL Source Connector
@@ -14,7 +14,7 @@ This project demonstrates a real-time **Change Data Capture (CDC)** pipeline usi
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Start all services
 
@@ -71,7 +71,7 @@ curl -X POST http://localhost:8083/connectors \
 
 ---
 
-## 📁 Key Files
+##  Key Files
 
 * [`dc.yaml`](./dc.yaml) – Docker Compose configuration
 * [`connectors/pg/debezium-postgres-source.json`](./connectors/pg/debezium-postgres-source.json) – Debezium source connector config
@@ -79,7 +79,7 @@ curl -X POST http://localhost:8083/connectors \
 
 ---
 
-## 🧪 Sample Data Insert
+##  Sample Data Insert
 
 ```sql
 INSERT INTO test_db.users (_id, data)
@@ -88,7 +88,7 @@ VALUES ('u1', '{"name": "Haneen", "email": "haneen@example.com"}');
 
 ---
 
-## 🔐 Security Notice
+##  Security Notice
 
 All secrets such as private keys and passwords are **redacted**.
 
