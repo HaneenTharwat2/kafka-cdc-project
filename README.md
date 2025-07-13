@@ -1,14 +1,10 @@
-Here is your complete and professional `README.md` file with the plugin section and updated structure:
-
----
-
 # Kafka CDC: PostgreSQL → Kafka → Snowflake
 
 This project demonstrates a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. Changes in PostgreSQL are captured, streamed to Kafka topics, and finally delivered into Snowflake for analytics — all orchestrated via Docker Compose.
 
 ---
 
-## 🧰 Technologies Used
+## Technologies Used
 
 * Apache Kafka + Kafka Connect
 * Debezium PostgreSQL Source Connector
@@ -18,7 +14,7 @@ This project demonstrates a real-time **Change Data Capture (CDC)** pipeline usi
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Start All Services
 
@@ -32,10 +28,10 @@ docker compose -f dc.yaml up -d
 
 You can connect using VS Code PostgreSQL extension or any SQL client:
 
-* **Host:** `localhost`
-* **Port:** `5432`
-* **User:** `admin`
-* **Password:** `password`
+* Host: `localhost`
+* Port: `5432`
+* User: `admin`
+* Password: `password`
 
 ---
 
@@ -81,7 +77,7 @@ curl -X POST http://localhost:8083/connectors \
 
 ---
 
-## 🔌 Plugin Setup
+## Plugin Setup
 
 Kafka Connect loads custom plugins from the mounted path:
 
@@ -97,7 +93,8 @@ plugins/
 └── snowflakeinc-snowflake-kafka-connector-3.2.0
 ```
 
-> If you're cloning this repo, ensure these plugin directories exist. Otherwise, you can install them using:
+If you're cloning this repository, make sure these plugin directories are included.
+Alternatively, install them manually using:
 
 ```bash
 confluent-hub install debezium/debezium-connector-postgresql:latest
@@ -106,40 +103,7 @@ confluent-hub install snowflakeinc/snowflake-kafka-connector:3.2.0
 
 ---
 
-## 📁 Project Structure
-
-```
-kafka-cdc-project/
-│
-├── dc.yaml                         # Docker Compose setup
-├── README.md
-│
-├── init/
-│   └── ed-pg.sql                   # SQL script to create schema & tables
-│
-├── connectors/
-│   ├── pg/
-│   │   └── debezium-postgres-source.json
-│   └── snowflake/
-│       └── snowflake-sink-connector.json
-│
-├── plugins/
-│   ├── debezium-connector-postgres/
-│   └── snowflakeinc-snowflake-kafka-connector-3.2.0/
-│
-├── ResultSnapshots/
-│   ├── users-topic-messages.png
-│   ├── orders-topic-messages.png
-│   ├── snowflake-users-table.png
-│   └── snowflake-orders-table.png
-│
-└── diagram/
-    └── architecture.drawio.png
-```
-
----
-
-## 🧪 Sample Data Insert
+## Sample Data Insert
 
 ```sql
 INSERT INTO test_db.users (_id, data)
@@ -182,7 +146,7 @@ VALUES (
 
 ---
 
-## 📸 Output Snapshots
+## Output Snapshots
 
 | Kafka Topic Messages                             | Snowflake Table Results                           |
 | ------------------------------------------------ | ------------------------------------------------- |
@@ -191,10 +155,7 @@ VALUES (
 
 ---
 
-## 🔒 Security Notice
+## Security Notice
 
-All secrets such as private keys, passwords, and credentials are **redacted** or excluded for security reasons.
-
+All secrets (e.g., Snowflake private keys, passwords) are redacted for security. Please replace them with your own credentials securely in your local environment
 ---
-
-Let me know if you'd like a downloadable `.md` version or if you'd like to tailor this for PDF or GitHub Pages.
