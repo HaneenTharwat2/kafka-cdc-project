@@ -1,3 +1,25 @@
+# Kafka CDC: PostgreSQL → Kafka → Snowflake
+
+This project demonstrates a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. Changes in PostgreSQL are streamed to Kafka topics and then delivered into Snowflake for analytics.
+
+---
+
+##  Technologies
+
+- Apache Kafka + Kafka Connect
+- Debezium PostgreSQL Source Connector
+- Snowflake Sink Connector
+- PostgreSQL
+- Docker Compose
+
+---
+
+##  Quick Start
+
+### Start all services
+
+bash
+docker compose -f dc.yaml up -d
 
 
 ### Access PostgreSQL
