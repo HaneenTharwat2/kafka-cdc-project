@@ -1,39 +1,43 @@
-# Kafka CDC: PostgreSQL → Kafka → Snowflake
+#  Kafka CDC: PostgreSQL → Kafka → Snowflake
 
-This project demonstrates a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. Changes in PostgreSQL are streamed to Kafka topics and then delivered into Snowflake for analytics.
+This project demonstrates a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. Changes in PostgreSQL are streamed to Kafka topics, then delivered into Snowflake for analytics.
 
 ---
 
-##  Technologies
+##  Technologies Used
 
-- Apache Kafka + Kafka Connect
-- Debezium PostgreSQL Source Connector
-- Snowflake Sink Connector
-- PostgreSQL
-- Docker Compose
+* Apache Kafka + Kafka Connect
+* Debezium PostgreSQL Source Connector
+* Snowflake Sink Connector
+* PostgreSQL
+* Docker Compose
 
 ---
 
 ##  Quick Start
 
-### Start all services
+###  1. Start All Services
 
 ```bash
 docker compose -f dc.yaml up -d
-````
+```
 
-### Access PostgreSQL
+---
 
-Connect using any SQL client or VS Code extension:
+### 2. Access PostgreSQL
 
-* Host: `localhost`
-* Port: `5432`
-* User: `admin`
-* Password: `password`
+Connect using any SQL client or the VS Code PostgreSQL extension:
 
-### Create schema and tables
+* **Host**: `localhost`
+* **Port**: `5432`
+* **User**: `admin`
+* **Password**: `password`
 
-Run the script in [`init/ed-pg.sql`](./init/ed-pg.sql), or manually:
+---
+
+### 3. Create Schema and Tables
+
+You can either run [`init/ed-pg.sql`](./init/ed-pg.sql) or manually execute:
 
 ```sql
 CREATE SCHEMA IF NOT EXISTS test_db;
@@ -51,7 +55,9 @@ CREATE TABLE test_db.orders (
 );
 ```
 
-### Register connectors
+---
+
+### 4. Register Connectors
 
 #### PostgreSQL Source Connector
 
@@ -71,24 +77,69 @@ curl -X POST http://localhost:8083/connectors \
 
 ---
 
-##  Key Files
-
-* [`dc.yaml`](./dc.yaml) – Docker Compose configuration
-* [`connectors/pg/debezium-postgres-source.json`](./connectors/pg/debezium-postgres-source.json) – Debezium source connector config
-* [`connectors/snowflake/snowflake-sink-connector.json`](./connectors/snowflake/snowflake-sink-connector.json) – Snowflake sink connector config (credentials redacted)
-
----
-
-##  Sample Data Insert
+##  Sample Insert
 
 ```sql
 INSERT INTO test_db.users (_id, data)
 VALUES ('u1', '{"name": "Haneen", "email": "haneen@example.com"}');
+
+INSERT INTO test_db.orders (_id, data)
+VALUES ('order1', '{
+  "_id": "order1",
+  "userId": "u1",
+  "status": "processing",
+  "orderDate": "2025-07-08",
+  "totalAmount": 199.99,
+  "paymentMethod": "credit_card",
+  "lineItems": [
+    {
+      "name": "Keyboard",
+      "price": 49.99,
+      "quantity": 1,
+      "subtotal": 49.99,
+      "productId": "p1001"
+    }
+  ],
+  "billingAddress": {
+    "city": "Cairo",
+    "state": "EG",
+    "street": "Tahrir",
+    "zipCode": "11511"
+  },
+  "shippingAddress": {
+    "city": "Cairo",
+    "state": "EG",
+    "street": "Zamalek",
+    "zipCode": "11211"
+  }
+}');
 ```
+
+---
+
+## Result Snapshots
+
+###  Kafka Topic: Users
+
+![Users Topic](./Result-Snapshots/users-topic.png)
+
+###  Kafka Topic: Orders
+
+![Orders Topic](./Result-Snapshots/orders-topic.png)
+
+###  Snowflake Table: Users
+
+![Snowflake Users](./Result-Snapshots/snowflake-users.png)
+
+###  Snowflake Table: Orders
+
+![Snowflake Orders](./Result-Snapshots/snowflake-orders.png)
 
 ---
 
 ##  Security Notice
 
-All secrets such as private keys and passwords are **redacted**.
+All secrets (e.g., private keys, passphrases) are **redacted** from this repo. Do not share credentials publicly.
+
+---
 
