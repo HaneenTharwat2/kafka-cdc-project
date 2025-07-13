@@ -96,4 +96,4 @@ All secrets such as private keys and passwords are **redacted**.
 
 ---
 
-If you also want help adding screenshots with Markdown, let me know.
+
