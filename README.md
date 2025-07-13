@@ -118,14 +118,17 @@ VALUES ('order1', '{
 ---
 
 
-Result Snapshots
-Kafka Topic: Users
 
-Kafka Topic: Orders
+🖼️ Result Snapshots
+🟢 Kafka Topic: Users
 
-Snowflake Table: Users
+🟢 Kafka Topic: Orders
 
-Snowflake Table: Orders
+🟦 Snowflake Table: Users
+
+🟦 Snowflake Table: Orders
+
+
 
 
 ---
