@@ -4,38 +4,38 @@ This project demonstrates a real-time **Change Data Capture (CDC)** pipeline usi
 
 ---
 
-##  Technologies
+## Technologies
 
-- Apache Kafka + Kafka Connect
-- Debezium PostgreSQL Source Connector
-- Snowflake Sink Connector
-- PostgreSQL
-- Docker Compose
+* Apache Kafka + Kafka Connect
+* Debezium PostgreSQL Source Connector
+* Snowflake Sink Connector
+* PostgreSQL
+* Docker Compose
 
 ---
 
-##  Quick Start
+## Quick Start
 
 ### Start all services
 
-bash
+```bash
 docker compose -f dc.yaml up -d
-
+```
 
 ### Access PostgreSQL
 
 Connect using any SQL client or VS Code extension:
 
-* Host: localhost
-* Port: 5432
-* User: admin
-* Password: password
+* Host: `localhost`
+* Port: `5432`
+* User: `admin`
+* Password: `password`
 
 ### Create schema and tables
 
 Run the script in [init/ed-pg.sql](./init/ed-pg.sql), or manually:
 
-sql
+```sql
 CREATE SCHEMA IF NOT EXISTS test_db;
 
 CREATE TABLE test_db.users (
@@ -49,29 +49,31 @@ CREATE TABLE test_db.orders (
   data JSONB,
   createdat TIMESTAMPTZ DEFAULT now()
 );
-
-
-### Register connectors
-
-#### PostgreSQL Source Connector
-
-bash
-curl -X POST http://localhost:8083/connectors \
-  -H "Content-Type: application/json" \
-  -d @connectors/pg/debezium-postgres-source.json
-
-
-#### Snowflake Sink Connector
-
-bash
-curl -X POST http://localhost:8083/connectors \
-  -H "Content-Type: application/json" \
-  -d @connectors/snowflake/snowflake-sink-connector.json
-
+```
 
 ---
 
-##  Key Files
+### Register Connectors
+
+#### PostgreSQL Source Connector
+
+```bash
+curl -X POST http://localhost:8083/connectors \
+  -H "Content-Type: application/json" \
+  -d @connectors/pg/debezium-postgres-source.json
+```
+
+#### Snowflake Sink Connector
+
+```bash
+curl -X POST http://localhost:8083/connectors \
+  -H "Content-Type: application/json" \
+  -d @connectors/snowflake/snowflake-sink-connector.json
+```
+
+---
+
+## Key Files
 
 * [dc.yaml](./dc.yaml) – Docker Compose configuration
 * [connectors/pg/debezium-postgres-source.json](./connectors/pg/debezium-postgres-source.json) – Debezium source connector config
@@ -79,15 +81,19 @@ curl -X POST http://localhost:8083/connectors \
 
 ---
 
-##  Sample Data Insert
+## Sample Data Insert
 
-sql
+```sql
 INSERT INTO test_db.users (_id, data)
 VALUES ('u1', '{"name": "Haneen", "email": "haneen@example.com"}');
-
+```
 
 ---
 
-##  Security Notice
+## Security Notice
 
 All secrets such as private keys and passwords are **redacted**.
+
+---
+
+If you also want help adding screenshots with Markdown, let me know.
