@@ -143,16 +143,6 @@ VALUES (
   }'
 );
 ```
-
----
-
-## Output Snapshots
-
-| Kafka Topic Messages                             | Snowflake Table Results                           |
-| ------------------------------------------------ | ------------------------------------------------- |
-| ![](./ResultSnapshots/users-topic-messages.png)  | ![](./ResultSnapshots/snowflake-users-table.png)  |
-| ![](./ResultSnapshots/orders-topic-messages.png) | ![](./ResultSnapshots/snowflake-orders-table.png) |
-
 ---
 
 ## Security Notice
