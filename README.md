@@ -85,7 +85,7 @@ Kafka Connect loads custom plugins from the mounted path:
 CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components,/tmp/ext-plugins"
 ```
 
-install them manually using:
+Install them manually using:
 
 ```bash
 confluent-hub install debezium/debezium-connector-postgresql:latest
