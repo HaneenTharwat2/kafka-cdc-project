@@ -1,22 +1,27 @@
+Certainly! Here's the **full professional `README.md`** including your project summary, technologies, setup, connector registration, result screenshots, and key files — all tailored to your structure:
+
+---
+
 #  Kafka CDC: PostgreSQL → Kafka → Snowflake
 
-This project demonstrates a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. Changes in PostgreSQL are streamed to Kafka topics, then delivered into Snowflake for analytics.
+This project demonstrates a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. It captures changes from PostgreSQL tables, streams them into Kafka topics, and sinks them into Snowflake for analytics and reporting.
 
 ---
 
 ##  Technologies Used
 
-* Apache Kafka + Kafka Connect
-* Debezium PostgreSQL Source Connector
-* Snowflake Sink Connector
-* PostgreSQL
-* Docker Compose
+* **Apache Kafka** (event streaming platform)
+* **Kafka Connect** (connector framework)
+* **Debezium PostgreSQL Source Connector**
+* **Snowflake Sink Connector**
+* **PostgreSQL**
+* **Docker Compose**
 
 ---
 
 ##  Quick Start
 
-###  1. Start All Services
+### 1. Start All Services
 
 ```bash
 docker compose -f dc.yaml up -d
@@ -26,18 +31,18 @@ docker compose -f dc.yaml up -d
 
 ### 2. Access PostgreSQL
 
-Connect using any SQL client or the VS Code PostgreSQL extension:
+You can connect using a PostgreSQL client (DBeaver, VS Code extension, etc.):
 
-* **Host**: `localhost`
-* **Port**: `5432`
-* **User**: `admin`
-* **Password**: `password`
+* **Host:** `localhost`
+* **Port:** `5432`
+* **Username:** `admin`
+* **Password:** `password`
 
 ---
 
 ### 3. Create Schema and Tables
 
-You can either run [`init/ed-pg.sql`](./init/ed-pg.sql) or manually execute:
+Execute the SQL in [`init/ed-pg.sql`](./init/ed-pg.sql), or paste manually:
 
 ```sql
 CREATE SCHEMA IF NOT EXISTS test_db;
@@ -57,9 +62,9 @@ CREATE TABLE test_db.orders (
 
 ---
 
-### 4. Register Connectors
+### 4. Register Kafka Connectors
 
-#### PostgreSQL Source Connector
+####  PostgreSQL Source Connector
 
 ```bash
 curl -X POST http://localhost:8083/connectors \
@@ -67,7 +72,7 @@ curl -X POST http://localhost:8083/connectors \
   -d @connectors/pg/debezium-postgres-source.json
 ```
 
-#### Snowflake Sink Connector
+####  Snowflake Sink Connector
 
 ```bash
 curl -X POST http://localhost:8083/connectors \
@@ -77,65 +82,30 @@ curl -X POST http://localhost:8083/connectors \
 
 ---
 
-##  Sample Insert
+##  Result Snapshots
 
-```sql
-INSERT INTO test_db.users (_id, data)
-VALUES ('u1', '{"name": "Haneen", "email": "haneen@example.com"}');
+###  Kafka Topic: Users
 
-INSERT INTO test_db.orders (_id, data)
-VALUES ('order1', '{
-  "_id": "order1",
-  "userId": "u1",
-  "status": "processing",
-  "orderDate": "2025-07-08",
-  "totalAmount": 199.99,
-  "paymentMethod": "credit_card",
-  "lineItems": [
-    {
-      "name": "Keyboard",
-      "price": 49.99,
-      "quantity": 1,
-      "subtotal": 49.99,
-      "productId": "p1001"
-    }
-  ],
-  "billingAddress": {
-    "city": "Cairo",
-    "state": "EG",
-    "street": "Tahrir",
-    "zipCode": "11511"
-  },
-  "shippingAddress": {
-    "city": "Cairo",
-    "state": "EG",
-    "street": "Zamalek",
-    "zipCode": "11211"
-  }
-}');
-```
+![Users Topic](./Result-Snapshots/users-topic.png)
+
+###  Kafka Topic: Orders
+
+![Orders Topic](./Result-Snapshots/orders-topic.png)
+
+###  Snowflake Table: Users
+
+![Snowflake Users](./Result-Snapshots/snowflake-users.png)
+
+###  Snowflake Table: Orders
+
+![Snowflake Orders](./Result-Snapshots/snowflake-orders.png)
 
 ---
 
+## 🔐 Security Notice
 
-
-🖼️ Result Snapshots
-🟢 Kafka Topic: Users
-
-🟢 Kafka Topic: Orders
-
-🟦 Snowflake Table: Users
-
-🟦 Snowflake Table: Orders
-
-
-
+All credentials (e.g. passwords, private keys) have been redacted from this repo. Never commit sensitive credentials to version control.
 
 ---
 
-##  Security Notice
-
-All secrets (e.g., private keys, passphrases) are **redacted** from this repo. Do not share credentials publicly.
-
----
 
