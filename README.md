@@ -93,7 +93,7 @@ plugins/
 └── snowflakeinc-snowflake-kafka-connector-3.2.0
 ```
 
-If you're cloning this repository, make sure these plugin directories are included.
+
 Alternatively, install them manually using:
 
 ```bash
