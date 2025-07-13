@@ -107,19 +107,19 @@ curl -X POST http://localhost:8083/connectors \
 
 ### 🟢 Kafka Topic: Users
 
-![Users Topic](./Result Snapshots/users-topic-messages.png)
+![Users Topic](./ResultSnapshots/users-topic-messages.png)
 
 ### 🟢 Kafka Topic: Orders
 
-![Orders Topic](./Result Snapshots/orders-topic-messages.png)
+![Orders Topic](./ResultSnapshots/orders-topic-messages.png)
 
 ### 🟦 Snowflake Table: Users
 
-![Snowflake Users](./Result Snapshots/snowflake-users-table.png)
+![Snowflake Users](./ResultSnapshots/snowflake-users-table.png)
 
 ### 🟦 Snowflake Table: Orders
 
-![Snowflake Orders](./Result Snapshots/snowflake-orders-table.png)
+![Snowflake Orders](./ResultSnapshots/snowflake-orders-table.png)
 
 ---
 
