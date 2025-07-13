@@ -88,11 +88,6 @@ CONNECT_PLUGIN_PATH: "/usr/share/java,/usr/share/confluent-hub-components,/tmp/e
 In this project, plugins are located in the `plugins/` folder:
 
 ```
-plugins/
-├── debezium-connector-postgres
-└── snowflakeinc-snowflake-kafka-connector-3.2.0
-```
-
 
 Alternatively, install them manually using:
 
@@ -143,9 +138,23 @@ VALUES (
   }'
 );
 ```
+
+---
+
+## Key Files
+
+* `dc.yaml`: Docker Compose configuration
+* `init/ed-pg.sql`: SQL schema and table creation script
+* `connectors/pg/debezium-postgres-source.json`: Debezium source connector config
+* `connectors/snowflake/snowflake-sink-connector.json`: Snowflake sink connector config
+* `plugins/`: Contains required Kafka Connect plugins
+
 ---
 
 ## Security Notice
 
-All secrets (e.g., Snowflake private keys, passwords) are redacted for security. Please replace them with your own credentials securely in your local environment
+All secrets (e.g., Snowflake private keys, passwords) are redacted for security. Please replace them with your own credentials securely in your local environment.
+
 ---
+
+
