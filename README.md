@@ -1,7 +1,3 @@
-Certainly! Here's the **full professional `README.md`** including your project summary, technologies, setup, connector registration, result screenshots, and key files — all tailored to your structure:
-
----
-
 # 📡 Kafka CDC: PostgreSQL → Kafka → Snowflake
 
 This project demonstrates a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. It captures changes from PostgreSQL tables, streams them into Kafka topics, and sinks them into Snowflake for analytics and reporting.
@@ -111,19 +107,19 @@ curl -X POST http://localhost:8083/connectors \
 
 ### 🟢 Kafka Topic: Users
 
-![Users Topic](./Result-Snapshots/users-topic-messages.png)
+![Users Topic](./Result Snapshots/users-topic-messages.png)
 
 ### 🟢 Kafka Topic: Orders
 
-![Orders Topic](./Result-Snapshots/orders-topic-messages.png)
+![Orders Topic](./Result Snapshots/orders-topic-messages.png)
 
 ### 🟦 Snowflake Table: Users
 
-![Snowflake Users](./Result-Snapshots/snowflake-users-table.png)
+![Snowflake Users](./Result Snapshots/snowflake-users-table.png)
 
 ### 🟦 Snowflake Table: Orders
 
-![Snowflake Orders](./Result-Snapshots/snowflake-orders-table.png)
+![Snowflake Orders](./Result Snapshots/snowflake-orders-table.png)
 
 ---
 
@@ -132,10 +128,3 @@ curl -X POST http://localhost:8083/connectors \
 All credentials (e.g. passwords, private keys) have been redacted from this repo. Never commit sensitive credentials to version control.
 
 ---
-
-Let me know if you'd also like to include:
-
-* A brief **Architecture Explanation**
-* A **sample record flow**
-* A link to your **diagram.png**
-  I can append that too.
