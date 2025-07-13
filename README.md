@@ -1,7 +1,3 @@
-Certainly! Here's the **full professional `README.md`** including your project summary, technologies, setup, connector registration, result screenshots, and key files — all tailored to your structure:
-
----
-
 #  Kafka CDC: PostgreSQL → Kafka → Snowflake
 
 This project demonstrates a real-time **Change Data Capture (CDC)** pipeline using **Debezium**, **Apache Kafka**, and **Snowflake**. It captures changes from PostgreSQL tables, streams them into Kafka topics, and sinks them into Snowflake for analytics and reporting.
